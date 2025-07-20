@@ -150,7 +150,7 @@ class listener implements EventSubscriberInterface
                                $sql = 'SELECT topic_id FROM ' . POSTS_TABLE . '
                                        WHERE post_id = ' . (int) $post_id;
                                $result = $this->db->sql_query_limit($sql, 1);
-                               $topic_id = (int) $this->db->sql_fetchfield('topic_id');
+                               $topic_id = (int) $this->db->sql_fetchfield('topic_id', false, $result);
                                $this->db->sql_freeresult($result);
                        }
                }
