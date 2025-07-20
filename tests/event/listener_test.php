@@ -19,24 +19,43 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class listener_test extends phpbb_test_case
 {
-	/** @var \alfredoramos\hide\includes\helper */
-	protected $helper;
+        /** @var \alfredoramos\hide\includes\helper */
+        protected $helper;
 
-	public function setUp(): void
-	{
-		parent::setUp();
+       /** @var \phpbb\db\driver\driver_interface */
+       protected $db;
 
-		$this->helper = $this->getMockBuilder(helper::class)
-			->disableOriginalConstructor()->getMock();
-	}
+       /** @var \phpbb\auth\auth */
+       protected $auth;
+
+       /** @var \phpbb\request\request_interface */
+       protected $request;
+
+       /** @var \phpbb\user */
+       protected $user;
+
+        public function setUp(): void
+        {
+                parent::setUp();
+
+                $this->helper = $this->getMockBuilder(helper::class)
+                        ->disableOriginalConstructor()->getMock();
+
+               $this->db = $this->getMockBuilder('phpbb\\db\\driver\\driver_interface')
+                       ->getMock();
+               $this->auth = $this->getMockBuilder('phpbb\\auth\\auth')->getMock();
+               $this->request = $this->getMockBuilder('phpbb\\request\\request_interface')
+                       ->getMock();
+               $this->user = $this->getMockBuilder('phpbb\\user')->disableOriginalConstructor()->getMock();
+        }
 
 	public function test_instance()
 	{
 		$this->assertInstanceOf(
-			EventSubscriberInterface::class,
-			new listener($this->helper)
-		);
-	}
+                       EventSubscriberInterface::class,
+                       new listener($this->helper, $this->db, $this->auth, $this->request, $this->user)
+                );
+        }
 
 	public function test_subscribed_events()
 	{
@@ -44,9 +63,10 @@ class listener_test extends phpbb_test_case
 			[
 				'core.user_setup',
 				'core.text_formatter_s9e_configure_after',
-				'core.feed_modify_feed_row'
-			],
-			array_keys(listener::getSubscribedEvents())
-		);
-	}
+                                'core.feed_modify_feed_row',
+                               'core.text_formatter_s9e_render_before'
+                        ],
+                        array_keys(listener::getSubscribedEvents())
+                );
+        }
 }
