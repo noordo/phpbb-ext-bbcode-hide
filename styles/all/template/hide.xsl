@@ -1,5 +1,7 @@
+<xsl:param name="S_HAS_POSTED"/>
+<xsl:param name="S_IS_ADMIN"/>
 <xsl:choose>
-	<xsl:when test="$S_USER_LOGGED_IN and not($S_IS_BOT)">
+       <xsl:when test="$S_USER_LOGGED_IN and not($S_IS_BOT) and ($S_HAS_POSTED or $S_IS_ADMIN)">
 		<section>
 			<xsl:attribute name="class">
 				<xsl:choose>
