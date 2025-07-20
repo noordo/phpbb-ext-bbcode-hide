@@ -151,7 +151,15 @@ class listener implements EventSubscriberInterface
                        $this->db->sql_freeresult($result);
                }
 
-               $renderer->setParameter('S_HAS_POSTED', $has_posted);
-               $renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
+               if (method_exists($renderer, 'setParameter'))
+               {
+                       $renderer->setParameter('S_HAS_POSTED', $has_posted);
+                       $renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
+               }
+               else if (property_exists($renderer, 'params'))
+               {
+                       $renderer->params['S_HAS_POSTED'] = $has_posted;
+                       $renderer->params['S_IS_ADMIN'] = $this->auth->acl_get('a_');
+               }
        }
 }
