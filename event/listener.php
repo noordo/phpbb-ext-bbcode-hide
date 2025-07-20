@@ -139,6 +139,21 @@ class listener implements EventSubscriberInterface
                $renderer = $event['renderer'];
 
                $topic_id = $this->request->variable('t', 0);
+
+               // When only a post id is present get the topic id
+               if (!$topic_id)
+               {
+                       $post_id = $this->request->variable('p', 0);
+
+                       if ($post_id)
+                       {
+                               $sql = 'SELECT topic_id FROM ' . POSTS_TABLE . '
+                                       WHERE post_id = ' . (int) $post_id;
+                               $result = $this->db->sql_query_limit($sql, 1);
+                               $topic_id = (int) $this->db->sql_fetchfield('topic_id');
+                               $this->db->sql_freeresult($result);
+                       }
+               }
                $has_posted = false;
 
                if ($this->user->data['user_id'] && $topic_id)
