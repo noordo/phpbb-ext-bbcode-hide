@@ -3,6 +3,10 @@ services:
         class: alfredoramos\hide\event\listener
         arguments:
             - '@alfredoramos.hide.helper'
+            - '@dbal.conn'
+            - '@auth'
+            - '@request'
+            - '@user'
         tags:
             - { name: event.listener }
 
