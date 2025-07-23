@@ -1,18 +1,31 @@
 /**
- * Hide extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@proton.me>
- * @copyright 2017 Alfredo Ramos
+ * Extension "[Hide] avancé" pour phpBB.
+ * @author Noordo <https://github.com/noordo>
+ * @copyright 2025 Noordo
  * @license GPL-2.0-only
- */
+ *
+ * Adaptation de l'extension "Hide extension for phpBB"
+ * d'Alfredo Ramos <alfredo.ramos@proton.me>
+ * @copyright 2017 Alfredo Ramos
+**/
 
 .hidden-content,
 .hidden-content header span {
-  background-color: #fcf8e3;
+  background-color: #fcf8f3;
   border-color: #faebcc;
 }
 
+span.hidden-content.inline {
+  color: inherit;
+}
+
+span.hidden-content,
+div.hidden-content {
+  color: #ff0000; /* Rouge */
+}
+
 .hidden-content header span {
-  color: #8a6d3b;
+  color: #99cc99; /* Vert */
 }
 
 .bbcode-hide {

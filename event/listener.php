@@ -1,16 +1,20 @@
 <?php
 
 /**
- * Hide extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@proton.me>
- * @copyright 2017 Alfredo Ramos
+ * Extension "[Hide] avancé" pour phpBB.
+ * @author Noordo <https://github.com/noordo>
+ * @copyright 2025 Noordo
  * @license GPL-2.0-only
- */
+ *
+ * Adaptation de l'extension "Hide extension for phpBB"
+ * d'Alfredo Ramos <alfredo.ramos@proton.me>
+ * @copyright 2017 Alfredo Ramos
+**/
 
-namespace alfredoramos\hide\event;
+namespace noordo\hide\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use alfredoramos\hide\includes\helper;
+use noordo\hide\includes\helper;
 use phpbb\db\driver\factory as database;
 use phpbb\auth\auth;
 use phpbb\request\request_interface;
@@ -75,7 +79,7 @@ class listener implements EventSubscriberInterface
 	{
 		$lang_set_ext = $event['lang_set_ext'];
 		$lang_set_ext[] = [
-			'ext_name'	=> 'alfredoramos/hide',
+			'ext_name'	=> 'noordo/hide',
 			'lang_set'	=> 'posting'
 		];
 		$event['lang_set_ext'] = $lang_set_ext;
@@ -165,16 +169,32 @@ class listener implements EventSubscriberInterface
                        $has_posted = (bool) $this->db->sql_fetchrow($result);
                        $this->db->sql_freeresult($result);
                }
+               //echo "<pre>";
+               //var_dump($renderer);
+               //echo "</pre>";
+               // if (method_exists($renderer, 'setParameter'))
+               // {
+                       // print_r('<br />has_posted2 = '.$has_posted);
+                       // $renderer->setParameter('S_HAS_POSTED', $has_posted);
+                       // $renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
+               // }
+               // else if (property_exists($renderer, 'params'))
+               // {
+                       // print_r('<br />has_posted3 = '.$has_posted);
+                       // $renderer->params['S_HAS_POSTED'] = $has_posted;
+                       // $renderer->params['S_IS_ADMIN'] = $this->auth->acl_get('a_');
+               // }
+               if (method_exists($renderer, 'get_renderer'))
+                {
+                    $real_renderer = $renderer->get_renderer();
 
-               if (method_exists($renderer, 'setParameter'))
-               {
-                       $renderer->setParameter('S_HAS_POSTED', $has_posted);
-                       $renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
-               }
-               else if (property_exists($renderer, 'params'))
-               {
-                       $renderer->params['S_HAS_POSTED'] = $has_posted;
-                       $renderer->params['S_IS_ADMIN'] = $this->auth->acl_get('a_');
-               }
+                    if (method_exists($real_renderer, 'setParameter'))
+                    {
+                        $real_renderer->setParameter('S_HAS_POSTED', $has_posted);
+                        $real_renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
+                    }
+                }
+
+               
        }
 }

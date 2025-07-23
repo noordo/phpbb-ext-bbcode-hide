@@ -1,8 +1,8 @@
 services:
-    alfredoramos.hide.listener:
-        class: alfredoramos\hide\event\listener
+    noordo.hide.listener:
+        class: noordo\hide\event\listener
         arguments:
-            - '@alfredoramos.hide.helper'
+            - '@noordo.hide.helper'
             - '@dbal.conn'
             - '@auth'
             - '@request'
@@ -10,8 +10,8 @@ services:
         tags:
             - { name: event.listener }
 
-    alfredoramos.hide.helper:
-        class: alfredoramos\hide\includes\helper
+    noordo.hide.helper:
+        class: noordo\hide\includes\helper
         arguments:
             - '@dbal.conn'
             - '@filesystem'

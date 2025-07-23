@@ -1,13 +1,17 @@
 <?php
 
 /**
- * Hide extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@proton.me>
- * @copyright 2017 Alfredo Ramos
+ * Extension "[Hide] avancé" pour phpBB.
+ * @author Noordo <https://github.com/noordo>
+ * @copyright 2025 Noordo
  * @license GPL-2.0-only
- */
+ *
+ * Adaptation de l'extension "Hide extension for phpBB"
+ * d'Alfredo Ramos <alfredo.ramos@proton.me>
+ * @copyright 2017 Alfredo Ramos
+**/
 
-namespace alfredoramos\hide;
+namespace noordo\hide;
 
 use phpbb\extension\base;
 
