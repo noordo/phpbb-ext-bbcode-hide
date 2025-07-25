@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  EXTNAME: 'alfredoramos/hide'
+  EXTNAME: 'noordo/hide'
   SNIFF: 1
   IMAGE_ICC: 1
   EPV: 1

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Hide Extension Builder" description="Builds an extension.zip from a git repository" default="all">
-	<property name="vendor-name" value="alfredoramos" />
+       <property name="vendor-name" value="noordo" />
 	<property name="extension-name" value="hide" />
 	<!--
 	Only set this to "true" if you have dependencies in the composer.json,

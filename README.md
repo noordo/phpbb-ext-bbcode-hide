@@ -5,16 +5,16 @@ Extension BBCode Hide améliorée pour phpBB.
 ## Fonctionnalités principales
 
 - Quatre modes d’utilisation :
-- `[hide]texte[/hide]`  
+- `[hide]texte[/hide]`
   → Caché aux membres n’ayant pas posté et aux invités
 
-- `[hide=guests]texte[/hide]`  
+- `[hide=guests]texte[/hide]`
   → Caché uniquement aux invités/bots, visible à tous les membres connectés
 
-- `[hide=inline]texte[/hide]`  
+- `[hide=inline]texte[/hide]`
   → Caché aux membres n’ayant pas posté et aux invités, s’affiche “en ligne”
 
-- `[hide=guests-inline]texte[/hide]` ou `[hide=inline-guests]texte[/hide]`  
+- `[hide=guests-inline]texte[/hide]` ou `[hide=inline-guests]texte[/hide]`
   → Caché uniquement aux invités/bots, affiché “en ligne” pour les membres connectés
 
 **A noter la présence nécessaire du trait d'union quand on veut guests et inline simultanément.
