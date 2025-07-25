@@ -29,7 +29,9 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, [
 	'HIDE' => 'Peida',
-	'HIDE_HELPLINE' => '[hide]Tekst[/hide] või [hide inline=1]Tekst[/hide]',
-	'HIDDEN_CONTENT' => 'Peidetud sisu',
-	'HIDDEN_CONTENT_EXPLAIN' => 'Sisu sisselogitud kasutajatele.'
+        'HIDE_HELPLINE' => '[hide]Tekst[/hide], [hide=guests]Tekst[/hide], [hide=inline]Tekst[/hide] või [hide=guests-inline]Tekst[/hide]',
+        'HIDDEN_CONTENT' => 'Peidetud sisu',
+        'HIDDEN_CONTENT_VISIBLE_GUESTS' => 'Sisu nähtav kõigile sisse logitud kasutajatele!',
+        'HIDDEN_CONTENT_VISIBLE_POSTERS' => 'Sisu nähtav selle arutelu osalejatele!',
+        'HIDDEN_CONTENT_EXPLAIN' => 'Sisu sisselogitud kasutajatele.'
 ]);

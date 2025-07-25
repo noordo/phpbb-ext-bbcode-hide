@@ -169,32 +169,25 @@ class listener implements EventSubscriberInterface
                        $has_posted = (bool) $this->db->sql_fetchrow($result);
                        $this->db->sql_freeresult($result);
                }
-               //echo "<pre>";
-               //var_dump($renderer);
-               //echo "</pre>";
-               // if (method_exists($renderer, 'setParameter'))
-               // {
-                       // print_r('<br />has_posted2 = '.$has_posted);
-                       // $renderer->setParameter('S_HAS_POSTED', $has_posted);
-                       // $renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
-               // }
-               // else if (property_exists($renderer, 'params'))
-               // {
-                       // print_r('<br />has_posted3 = '.$has_posted);
-                       // $renderer->params['S_HAS_POSTED'] = $has_posted;
-                       // $renderer->params['S_IS_ADMIN'] = $this->auth->acl_get('a_');
-               // }
-               if (method_exists($renderer, 'get_renderer'))
+                if (method_exists($renderer, 'get_renderer'))
                 {
-                    $real_renderer = $renderer->get_renderer();
+                        $real_renderer = $renderer->get_renderer();
 
-                    if (method_exists($real_renderer, 'setParameter'))
-                    {
-                        $real_renderer->setParameter('S_HAS_POSTED', $has_posted);
-                        $real_renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
-                    }
+                        if (method_exists($real_renderer, 'setParameter'))
+                        {
+                                $real_renderer->setParameter('S_HAS_POSTED', $has_posted);
+                                $real_renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
+                        }
                 }
-
-               
+                elseif (method_exists($renderer, 'setParameter'))
+                {
+                        $renderer->setParameter('S_HAS_POSTED', $has_posted);
+                        $renderer->setParameter('S_IS_ADMIN', $this->auth->acl_get('a_'));
+                }
+                elseif (property_exists($renderer, 'params'))
+                {
+                        $renderer->params['S_HAS_POSTED'] = $has_posted;
+                        $renderer->params['S_IS_ADMIN'] = $this->auth->acl_get('a_');
+                }
        }
 }

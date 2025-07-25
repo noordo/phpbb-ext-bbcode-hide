@@ -29,7 +29,9 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, [
 	'HIDE' => 'Ocultar',
-	'HIDE_HELPLINE' => 'Uso: [hide]texto[/hide] ou [hide inline=1]texto[/hide]',
-	'HIDDEN_CONTENT' => 'Conteúdo oculto',
-	'HIDDEN_CONTENT_EXPLAIN' => 'Conteúdo exclusivo para usuários logados.'
+        'HIDE_HELPLINE' => 'Uso: [hide]texto[/hide], [hide=guests]texto[/hide], [hide=inline]texto[/hide] ou [hide=guests-inline]texto[/hide]',
+        'HIDDEN_CONTENT' => 'Conteúdo oculto',
+        'HIDDEN_CONTENT_VISIBLE_GUESTS' => 'Conteúdo visível para todos os usuários logados!',
+        'HIDDEN_CONTENT_VISIBLE_POSTERS' => 'Conteúdo visível para os participantes desta discussão!',
+        'HIDDEN_CONTENT_EXPLAIN' => 'Conteúdo exclusivo para usuários logados.'
 ]);
