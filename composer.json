@@ -26,5 +26,8 @@
         "soft-require": {
             "phpbb/phpbb": "3.3.*"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.2"
     }
 }
